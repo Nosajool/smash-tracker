@@ -19,6 +19,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @victories = Match.where(winner_id: @user.id)
+    @defeats = Match.where(loser_id: @user.id)
+    @matches = @victories.concat(@defeats);
   end
 
 
