@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'matches/new'
+
+  get 'matches/index'
+
+  get 'matches/show'
+
   get 'users/new'
 
   get 'users/index'

@@ -2,10 +2,18 @@
 
 one:
   winner_id: 1
-  loser_id: 1
+  loser_id: 3
   winner_stock: 1
+  created_at: <%= 5.hours.ago %>
 
 two:
   winner_id: 1
-  loser_id: 1
-  winner_stock: 1
+  loser_id: 2
+  winner_stock: 2
+  created_at: <%= 10.years.ago %>
+
+three:
+  winner_id: 2
+  loser_id: 3
+  winner_stock: 3
+  created_at: <%= 5.minutes.ago %>

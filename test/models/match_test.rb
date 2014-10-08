@@ -35,4 +35,8 @@ class MatchTest < ActiveSupport::TestCase
 		@match.winner_stock = nil
 		assert_not @match.valid?
 	end
+
+	test "order should be most recent first" do
+		assert_equal Match.first, matches(:three)
+	end
 end
