@@ -2,7 +2,7 @@
 	<h2>User List</h2>
 	<div class="list-group">
 		<% @users.each do |user| %>
-			<a href="#" class="list-group-item"><%= user.name %></a>
+			<%= link_to "#{user.name}", user_path(user.id), { class: "list-group-item" } %>
 		<% end %>
 	</div>
 	<%= link_to "Add New Player", new_user_path, {class: "btn btn-default"} %>

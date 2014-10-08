@@ -1,1 +1,4 @@
-<h1>New Match</h1>
+<h1>Add New Match</h1>
+<%= form_for(@match) do |f| %>
+  <%= render 'fields', f: f %>
+<% end %>

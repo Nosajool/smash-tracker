@@ -2,7 +2,7 @@
 	<h2>Recent Matches</h2>
 	<div class="list-group">
 		<% @matches.each do |match| %>
-			<a href="#" class="list-group-item"><%= match.winner_stock %></a>
+			<%= link_to "#{match.winner.name} beat #{match.loser.name} by #{match.winner_stock} stock", match_path(match.id), { class: "list-group-item" } %>
 		<% end %>
 	</div>
 	<%= link_to "Add New Match", new_match_path, {class: "btn btn-default"} %>
