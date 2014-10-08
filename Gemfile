@@ -25,15 +25,10 @@ gem 'jbuilder', '~> 2.0'
 
 gem 'rails-api'
 
-
-gem 'sqlite3'
-
-gem 'redis'
 gem 'rest_client'
-gem 'rack-cors'
 
-group :doc
-	gem 'sdoc', '~> 0.4.0',          group: :doc
+group :doc do
+	gem 'sdoc', '~> 0.4.0'
 end
 
 group :development do
