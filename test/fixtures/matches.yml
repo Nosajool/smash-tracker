@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  winner_id: 1
+  loser_id: 1
+  winner_stock: 1
+
+two:
+  winner_id: 1
+  loser_id: 1
+  winner_stock: 1
