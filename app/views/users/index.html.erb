@@ -1,5 +1,5 @@
 <div class="user-list">
-	<h2>User List</h2>
+	<h2>User List (<%= @users.count %>)</h2>
 	<div class="list-group">
 		<% @users.each do |user| %>
 			<%= link_to "#{user.name}", user_path(user.id), { class: "list-group-item" } %>

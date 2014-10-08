@@ -2,6 +2,7 @@ class MatchesController < ApplicationController
   def new
   	@match = Match.new
   	@users = User.all
+    @characters = Character.all
   end
 
   def create
@@ -27,6 +28,6 @@ class MatchesController < ApplicationController
   private
 
   def match_params
-    params.permit(:winner_id, :loser_id, :winner_stock)
+    params.permit(:winner_id, :loser_id, :winner_stock, :wcharacter_id, :lcharacter_id)
   end
 end

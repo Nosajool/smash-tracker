@@ -3,20 +3,20 @@
 	<h2>Total Matches (<%= @matches.count %>)</h2>
 	<div class="list-group">
 		<% @matches.each do |match| %>
-			<%= link_to "#{match.winner.name} beat #{match.loser.name} by #{match.winner_stock} stock", match_path(match.id), { class: "list-group-item" } %>
+			<%= link_to "#{match.winner.name}'s #{match.wcharacter.name} beat #{match.loser.name}'s #{match.lcharacter.name} by #{match.winner_stock} stock", match_path(match.id), { class: "list-group-item" } %>
 		<% end %>
 	</div>
 	<div class="row">
 		<div class="col-md-6">
 			<h3>Victories (<%= @victories.count %>)</h3>
 			<% @victories.each do |match| %>
-				<%= link_to "#{match.winner.name} beat #{match.loser.name} by #{match.winner_stock} stock", match_path(match.id), { class: "list-group-item" } %>
+				<%= link_to "#{match.winner.name}'s #{match.wcharacter.name} beat #{match.loser.name}'s #{match.lcharacter.name} by #{match.winner_stock} stock", match_path(match.id), { class: "list-group-item" } %>
 			<% end %>			
 		</div>
 		<div class="col-md-6">
 			<h3>Defeats (<%= @defeats.count %>)</h3>
 			<% @defeats.each do |match| %>
-				<%= link_to "#{match.winner.name} beat #{match.loser.name} by #{match.winner_stock} stock", match_path(match.id), { class: "list-group-item" } %>
+				<%= link_to "#{match.winner.name}'s #{match.wcharacter.name} beat #{match.loser.name}'s #{match.lcharacter.name} by #{match.winner_stock} stock", match_path(match.id), { class: "list-group-item" } %>
 			<% end %>				
 		</div>
 	</div>

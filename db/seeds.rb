@@ -1,7 +1,57 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+characters = ["Dr. Mario",
+			"Greninja",
+			"Ganondorf",
+			"Ike",
+			"Charizard",
+			"Captain Falcon",
+			"Bowser Jr.",
+			"Kirby",
+			"Link",
+			"Little Mac",
+			"Lucario",
+			"King Dedede",
+			"Jigglypuff",
+			"Luigi",
+			"Mario",
+			"Lucina",
+			"Mega Man",
+			"Marth",
+			"Meta Knight",
+			"Fox",
+			"Falco",
+			"Duck Hunt Dog",
+			"Bowser",
+			"Donkey Kong",
+			"Diddy Kong",
+			"Dark Pit",
+			"Ness",
+			"Mr. Game & Watch",
+			"Mii Brawler",
+			"Mii Gunner",
+			"Mii Swordfighter",
+			"Pit",
+			"Pikachu",	
+			"Robin",
+			"R.O.B.",
+			"Rosalina & Luma",
+			"Peach",
+			"Palutena",
+			"Pac-Man",
+			"Olimar",
+			"Samus",
+			"Sonic",
+			"Toon Link",
+			"Sheik",
+			"Shulk",
+			"Villager",
+			"Wii Fit Trainer",
+			"Wario",
+			"Yoshi",
+			"Zelda",
+			"Zero Suit Samus"]
+
+puts "Inputting character names"
+characters.each do |name|
+	Character.create!({ name: name })
+	puts "#{name} added"
+end
