@@ -1,9 +1,5 @@
 <div class="match-list">
 	<h2>All Matches (<%= @matches.count %>)</h2>
-	<div class="list-group">
-		<% @matches.each do |match| %>
-			<%= link_to "#{match.winner.name}'s #{match.wcharacter.name} beat #{match.loser.name}'s #{match.lcharacter.name} by #{match.winner_stock} stock", match_path(match.id), { class: "list-group-item" } %>
-		<% end %>
-	</div>
+	<%= render 'shared/match_list', matches: @matches %>
 	<%= link_to "Add New Match", new_match_path, {class: "btn btn-default"} %>
 </div>
