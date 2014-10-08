@@ -1,5 +1,5 @@
 <div class="list-group">
 	<% matches.each do |match| %>
-		<%= link_to "#{match.winner.name}'s #{match.wcharacter.name} beat #{match.loser.name}'s #{match.lcharacter.name} by #{match.winner_stock} stock", match_path(match.id), { class: "list-group-item" } %>
+		<%= link_to "#{match.winner.name}'s #{match.wcharacter.name} beat #{match.loser.name}'s #{match.lcharacter.name} by #{match.winner_stock} stock #{time_ago_in_words(match.created_at)} ago", match_path(match.id), { class: "list-group-item" } %>
 	<% end %>
 </div>
