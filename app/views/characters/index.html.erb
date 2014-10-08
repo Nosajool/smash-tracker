@@ -1,0 +1,8 @@
+<div class="character-list">
+	<h2>All Characters (<%= @characters.count %>)</h2>
+	<div class="list-group">
+		<% @characters.each do |character| %>
+			<%= link_to "#{character.name}", character_path(character.id), { class: "list-group-item" } %>
+		<% end %>
+	</div>
+</div>

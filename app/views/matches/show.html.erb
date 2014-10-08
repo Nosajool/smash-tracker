@@ -1,4 +1,4 @@
 <h1>Viewing Match <%= @match.id %></h1>
 
-<h2>Winner: <%= link_to("#{@match.winner.name}", user_path(@match.winner_id)) %>'s <%= @match.wcharacter.name %> by <%= @match.winner_stock %> stock</h2>
-<h2>Loser: <%= link_to("#{@match.loser.name}", user_path(@match.loser_id)) %>'s <%= @match.lcharacter.name %></h2>
+<h2>Winner: <%= link_to("#{@match.winner.name}", user_path(@match.winner_id)) %>'s <%= link_to(@match.wcharacter.name, character_path(@match.wcharacter)) %> by <%= @match.winner_stock %> stock</h2>
+<h2>Loser: <%= link_to("#{@match.loser.name}", user_path(@match.loser_id)) %>'s <%= link_to(@match.lcharacter.name, character_path(@match.lcharacter)) %></h2>

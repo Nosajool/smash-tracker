@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :index, :show]
   resources :matches, only: [:new, :create, :index, :show]
+  resources :characters, only: [:index, :show]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
