@@ -71,6 +71,8 @@ GEM
     diffy (3.0.6)
     erubis (2.7.0)
     execjs (2.2.1)
+    faker (1.4.3)
+      i18n (~> 0.5)
     grit (2.5.0)
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
@@ -191,6 +193,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   coffee-rails (~> 4.0.0)
+  faker
   jazz_hands!
   jbuilder (~> 2.0)
   jquery-rails

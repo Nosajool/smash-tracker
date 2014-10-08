@@ -23,6 +23,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 
+gem 'faker'
+
 gem 'bootstrap-sass'
 
 gem 'rails-api'
