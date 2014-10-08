@@ -1,0 +1,9 @@
+<div class="user-list">
+	<h2>User List</h2>
+	<div class="list-group">
+		<% @users.each do |user| %>
+			<a href="#" class="list-group-item"><%= user.name %></a>
+		<% end %>
+	</div>
+	<%= link_to "Add New Player", new_user_path, {class: "btn btn-default"} %>
+</div>

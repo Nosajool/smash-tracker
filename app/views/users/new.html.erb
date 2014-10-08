@@ -1,0 +1,7 @@
+<h1>Create a new user</h1>
+<%= form_for(@user) do |f| %>
+  <%= render 'fields', f: f %>
+  <div class="form-group">
+      <%= f.submit "Create User", class: "btn btn-primary" %>
+  </div>
+<% end %>

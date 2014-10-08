@@ -1,15 +1,9 @@
 Rails.application.routes.draw do
-  get 'matches/new'
 
-  get 'matches/index'
+  root 'matches#index'
 
-  get 'matches/show'
-
-  get 'users/new'
-
-  get 'users/index'
-
-  get 'users/show'
+  resources :users, only: [:new, :create, :index, :show]
+  resources :matches, only: [:new, :create, :index, :show]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
