@@ -8,7 +8,7 @@ class Match < ActiveRecord::Base
 
 	validates(:winner_id, presence: true)
 	validates(:loser_id, presence: true)
-	validates(:wcharacter_id, presence: true)
-	validates(:lcharacter_id, presence: true)
+	validates(:wcharacter_id, presence: true, inclusion: { in: 1..51 } )
+	validates(:lcharacter_id, presence: true, inclusion: { in: 1..51 } )
 	validates(:winner_stock, presence: true, inclusion: { in: 1..4 } )
 end

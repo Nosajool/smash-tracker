@@ -4,7 +4,14 @@ class MatchTest < ActiveSupport::TestCase
 	def setup
 		@user1 = users(:user1)
 		@user2 = users(:user2)
-		@match = Match.new(winner_stock: 1, winner_id: @user1.id, loser_id: @user2.id)
+		@wchar = 1
+		@lchar = 2
+		@stock = 3
+		@match = Match.new(winner_stock: 1, 
+						   winner_id: @user1.id,
+						   loser_id: @user2.id,
+						   wcharacter_id: @wchar,
+						   lcharacter_id: @lchar)
 	end
 
 	test "match should be valid" do
@@ -33,6 +40,16 @@ class MatchTest < ActiveSupport::TestCase
 
 	test "winner stock should be present" do
 		@match.winner_stock = nil
+		assert_not @match.valid?
+	end
+
+	test "winning character id should be valid" do
+		@match.wcharacter_id = 100
+		assert_not @match.valid?
+	end
+
+	test "losing character id should be valid" do
+		@match.lcharacter_id = 100
 		assert_not @match.valid?
 	end
 

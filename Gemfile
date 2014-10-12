@@ -30,11 +30,8 @@ group :doc do
 	gem 'sdoc', '~> 0.4.0'
 end
 
-group :test do
+group :development, :test do
 	gem 'sqlite3'
-end
-
-group :development do
 	gem 'spring'
 	gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
 	gem 'pry-byebug'
