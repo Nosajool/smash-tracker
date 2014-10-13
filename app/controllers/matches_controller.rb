@@ -24,7 +24,6 @@ class MatchesController < ApplicationController
   	@match = Match.find(params[:id])
   end
 
-
   private
 
   def match_params
