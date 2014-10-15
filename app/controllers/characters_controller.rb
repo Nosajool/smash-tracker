@@ -7,6 +7,7 @@ class CharactersController < ApplicationController
 	  	@character = Character.find(params[:id])
 	  	@victories = Match.where(wcharacter: @character.id)
 	  	@defeats = Match.where(lcharacter: @character.id)
-  	    @matches = @victories.concat(@defeats);
+	  	@matches = []
+  	  @matches.concat(@victories).concat(@defeats)
 	end
 end

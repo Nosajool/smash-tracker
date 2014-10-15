@@ -7,11 +7,9 @@ namespace :db do
       User.create!(name: name)
     end
 
-    users = User.all
     # Create some matches
-    51
 
-    for x in 1..100
+    for x in (1..100)
       w_char_id = Character.order("Random()").first.id
       l_char_id = Character.order("Random()").first.id
       while(l_char_id == w_char_id)
