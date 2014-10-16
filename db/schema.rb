@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141008061639) do
+ActiveRecord::Schema.define(version: 20141016000432) do
 
   create_table "characters", force: true do |t|
     t.string   "name"
@@ -28,6 +28,11 @@ ActiveRecord::Schema.define(version: 20141008061639) do
     t.integer  "wcharacter_id"
     t.integer  "lcharacter_id"
   end
+
+  add_index "matches", ["lcharacter_id"], name: "index_matches_on_lcharacter_id"
+  add_index "matches", ["loser_id"], name: "index_matches_on_loser_id"
+  add_index "matches", ["wcharacter_id"], name: "index_matches_on_wcharacter_id"
+  add_index "matches", ["winner_id"], name: "index_matches_on_winner_id"
 
   create_table "users", force: true do |t|
     t.string   "name"
