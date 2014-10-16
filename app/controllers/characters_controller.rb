@@ -5,9 +5,9 @@ class CharactersController < ApplicationController
 
 	def show
 	  	@character = Character.find(params[:id])
-	  	@victories = Match.character_victories(@character.id)
-	  	@defeats = Match.character_defeats(@character.id)
+	  	@victories = Character.victories(@character.id)
+	  	@defeats = Character.defeats(@character.id)
 	  	@matches = []
-  	  @matches.concat(@victories).concat(@defeats)
+  	  	@matches.concat(@victories).concat(@defeats)
 	end
 end
