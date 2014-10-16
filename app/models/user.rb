@@ -22,4 +22,12 @@ class User < ActiveRecord::Base
 	def self.matches_between(user1_id, user2_id)
 		Match.where("(winner_id = #{user1_id} AND loser_id = #{user2_id}) OR (winner_id = #{user2_id} AND loser_id = #{user1_id})")
 	end
+
+	def self.num_victories(user_id)
+		Match.where(winner_id: user_id).count
+	end
+
+	def self.num_defeats(user_id)
+		Match.where(loser_id: user_id).count
+	end
 end
