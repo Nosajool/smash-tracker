@@ -29,5 +29,15 @@ class User < ActiveRecord::Base
 
 	def self.num_defeats(user_id)
 		Match.where(loser_id: user_id).count
+
+
+	def self.most_played_character(user_id)
+		# Match.unscoped.select("wcharacter_id").where(winner_id: user_id).group("wcharacter_id").order("count(*) desc")
+		Match.find_by_sql("SELECT * FROM
+											(SELECT wcharacter_id FROM matches WHERE winner_id = #{user_id}
+											UNION ALL
+											SELECT lcharacter_id FROM matches WHERE loser_id = #{user_id})
+											GROUP BY wcharacter_id ORDER BY count(*) DESC") # GROUP BY wcharacter_id ORDER BY count(*) DESC")
+
 	end
 end
