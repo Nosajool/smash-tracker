@@ -21,8 +21,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @victories = User.victories(@user.id)
     @defeats = User.defeats(@user.id)
-    @matches = []
-    @matches.concat(@victories).concat(@defeats)
+    @matches = User.matches(@user.id)
   end
 
   def compare
@@ -30,10 +29,9 @@ class UsersController < ApplicationController
     if params[:id1] && params[:id2]
       @user1 = User.find(params[:id1])
       @user2 = User.find(params[:id2])
-      @u1matches = Match.where(winner_id: @user1.id, loser_id: @user2.id)
-      @u2matches = Match.where(winner_id: @user2.id, loser_id: @user1.id)
-      @matches = []
-      @matches.concat(@u1matches).concat(@u2matches)
+      @u1matches = User.wins_against(@user1.id, @user2.id)
+      @u2matches = User.wins_against(@user2.id, @user1.id)
+      @matches = User.matches_between(@user1.id, @user2.id)
     else
     end
   end

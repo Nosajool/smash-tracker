@@ -8,4 +8,8 @@ class Character < ActiveRecord::Base
 	def self.defeats(character_id)
 		Match.where(lcharacter_id: character_id)
 	end
+
+	def self.matches(character_id)
+		Match.where("wcharacter_id = #{character_id} OR lcharacter_id = #{character_id}")
+	end
 end
