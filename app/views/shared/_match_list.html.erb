@@ -1,16 +1,24 @@
-<div class="col-md-6 col-md-offset-3">
-	<div class="list-group">
-		<table class="table">
-			<% matches.each do |match| %>
-				<tr class="row">
-					<td align="right"><%= link_to "#{match.winner.name}", match.winner %></td>
-					<td><%= link_to image_tag("character-thumb/#{match.wcharacter.imagename}.png"), match.wcharacter %></td>
-					<td><%= "#{match.winner_stock}" %></td>
-					<td><%= link_to image_tag("character-thumb/#{match.lcharacter.imagename}.png"), match.lcharacter %></td>
-					<td align="left"><%= link_to "#{match.loser.name}", match.loser %></td>
-					<!-- <td><%= "#{time_ago_in_words(match.created_at)} ago"%></td> -->
-				</tr>
-			<% end %>
-		</table>
-	</div>
+<div class="col-md-6 col-md-offset-3 list-group">
+	<table class="table list">
+		<% matches.each do |match| %>
+			<tr>
+				<td align="right">
+					<div><%= link_to "#{match.winner.name}", match.winner %></div>
+				</td>
+				<td align="center">
+					<div class="character-thumb" style="background-color: #<%= "#{match.wcharacter.colour}" %>;">
+						<%= link_to image_tag("character-thumb/#{match.wcharacter.imagename}.png"), match.wcharacter %>
+					</div>
+				</td>
+				<td align="center"><%= "#{match.winner_stock}" %></td>
+				<td align="center">
+					<div class="character-thumb" style="background-color: #<%= "#{match.lcharacter.colour}" %>;">
+						<%= link_to image_tag("character-thumb/#{match.lcharacter.imagename}.png"), match.lcharacter %>
+					</div>
+				</td>
+				<td align="left"><%= link_to "#{match.loser.name}", match.loser %></td>
+				<!-- <td><%= "#{time_ago_in_words(match.created_at)} ago"%></td> -->
+			</tr>
+		<% end %>
+	</table>
 </div>
