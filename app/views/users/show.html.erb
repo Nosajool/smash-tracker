@@ -1,13 +1,21 @@
 <h1>Recent Matches for <%= @user.name %></h1>
 <div class="match-list">
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-4">
 			<h3>Victories (<%= @victories.count %>)</h3>
 			<%= render 'shared/match_list', matches: @victories %>		
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-4">
 			<h3>Defeats (<%= @defeats.count %>)</h3>
 			<%= render 'shared/match_list', matches: @defeats %>			
+		</div>
+		<div class="col-md-4">
+			<h4>Most Used Characters</h4>
+			<div class="list-group">
+				<% @mostPlayedChars.each do |user| %>
+					<a class="list-group-item"><%= user.char %>, <%= user.games %> matches</a>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>

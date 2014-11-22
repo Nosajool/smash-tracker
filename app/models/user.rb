@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 		Match.includes(:lcharacter, :wcharacter, :winner, :loser).where(loser_id: user_id)
 	end	
 
-	def self.matches(user_id)
+	def self.all_matches(user_id)
 		Match.includes(:lcharacter, :wcharacter, :winner, :loser).where("winner_id = #{user_id} OR loser_id = #{user_id}")
 	end
 
@@ -31,13 +31,15 @@ class User < ActiveRecord::Base
 		Match.where(loser_id: user_id).count
 	end
 
-	def self.most_played_character(user_id)
+	def self.top_x_most_played_character(user_id, x)
 		# Match.unscoped.select("wcharacter_id").where(winner_id: user_id).group("wcharacter_id").order("count(*) desc")
-		Match.find_by_sql("SELECT * FROM
+		User.find_by_sql("SELECT 
+			(SELECT name FROM characters WHERE id = wcharacter_id) as char, 
+			count(wcharacter_id) as games FROM
 											(SELECT wcharacter_id FROM matches WHERE winner_id = #{user_id}
 											UNION ALL
 											SELECT lcharacter_id FROM matches WHERE loser_id = #{user_id})
-											GROUP BY wcharacter_id ORDER BY count(*) DESC") # GROUP BY wcharacter_id ORDER BY count(*) DESC")
+											GROUP BY wcharacter_id ORDER BY count(*) DESC LIMIT #{x}") # GROUP BY wcharacter_id ORDER BY count(*) DESC")
 	end
 
 	def self.stats
@@ -45,4 +47,5 @@ class User < ActiveRecord::Base
 		wins = Match.group(:winner_id).count
 		Hash[(losses.keys + wins.keys).uniq.map{|k| [k, [losses[k], wins[k]]]} ]
 	end
+
 end

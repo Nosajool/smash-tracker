@@ -22,6 +22,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @victories = User.victories(@user.id)
     @defeats = User.defeats(@user.id)
+    @mostPlayedChars = User.top_x_most_played_character(@user.id, 20)
   end
 
   def compare
