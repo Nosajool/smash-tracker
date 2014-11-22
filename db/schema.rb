@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141122011855) do
+ActiveRecord::Schema.define(version: 20141122032014) do
 
   create_table "characters", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "colour"
+    t.string   "colour"
     t.string   "imagename"
   end
 

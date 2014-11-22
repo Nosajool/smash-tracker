@@ -2,7 +2,7 @@
 	<h2>User List (<%= @users.count %>)</h2>
 	<div class="list-group">
 		<% @users.each do |user| %>
-			<%= link_to "#{user.name} (#{User.num_victories(user.id)}W #{User.num_defeats(user.id)}L)", user_path(user.id), { class: "list-group-item" } %>
+			<%= link_to "#{user.name} (#{@userStats[user.id][1]}W #{@userStats[user.id][0]}L)", user_path(user.id), { class: "list-group-item" } %>
 		<% end %>
 	</div>
 	<%= link_to "Add New Player", new_user_path, {class: "btn btn-default"} %>

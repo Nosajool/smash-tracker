@@ -15,6 +15,23 @@
  */
  @import "bootstrap";
 
- td {
+.box {
+  //margin: 0 10px 10px 0;
+}
+
+td {
+	text-align: center; 
     vertical-align: middle;
+}
+
+tr {
+	vertical-align: middle;
+}
+
+.character-thumb {
+    position: absolute;
+	border-radius: 50px;
+	width: 50px;
+	height: 50px;
+	align: "center";
 }

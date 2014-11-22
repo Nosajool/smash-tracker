@@ -1,14 +1,15 @@
 <div class="character-list">
 	<h2>All Characters (<%= @characters.count %>)</h2>
 	<div class="list-group">
-		<table class="table">
+		<div class="row">
 			<% @characters.each do |character| %>
-				<tr>
-					<td><%= image_tag "character-thumb/#{character.imagename}.png" %></td>
-					<td><%= link_to "#{character.name}", character_path(character.id) %></td>
-					<td><%= "(#{Character.num_victories(character.id)}W #{Character.num_defeats(character.id)}L)" %></td>
-				</tr>
-			<% end %>
-		</table>
+		    <div class="col-xs-6 col-md-3 box" style="background-color: #<%= "#{character.colour}" %> ;">
+		        <%= link_to image_tag("character-thumb/#{character.imagename}.png"), character %>
+		        <% unless @characterStats[character.id].nil? %>
+		        	<%= "#{@characterStats[character.id][1]}W #{@characterStats[character.id][0]}L" %>
+		        <% end %>
+		    </div>
+		    <% end %>
+		</div>
 	</div>
 </div>
