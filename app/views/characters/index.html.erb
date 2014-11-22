@@ -2,7 +2,7 @@
 	<h2>All Characters (<%= @characters.count %>)</h2>
 	<div class="list-group">
 		<% @characters.each do |character| %>
-			<%= link_to "#{character.name} (#{Character.num_victories(character.id)}W #{Character.num_defeats(character.id)}L)", character_path(character.id), { class: "list-group-item" } %>
+			<%= link_to "#{character.name} (#{@characterStats[character.id][1]}W #{@characterStats[character.id][0]}L)", character_path(character.id), { class: "list-group-item" } %>
 		<% end %>
 	</div>
 </div>

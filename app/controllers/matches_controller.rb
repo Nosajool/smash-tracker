@@ -17,7 +17,7 @@ class MatchesController < ApplicationController
   end
 
   def index
-  	@matches = Match.all
+  	@matches = Match.includes(:lcharacter, :wcharacter, :winner, :loser).all
   end
 
   def show
