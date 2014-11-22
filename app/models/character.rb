@@ -20,4 +20,10 @@ class Character < ActiveRecord::Base
 	def self.num_defeats(character_id)
 		Match.where(lcharacter_id: character_id).count
 	end
+
+	def self.stats
+		losses = Match.group(:lcharacter_id).count
+		wins = Match.group(:wcharacter_id).count
+		Hash[(losses.keys + wins.keys).uniq.map{|k| [k, [losses[k], wins[k]]]} ]
+	end
 end

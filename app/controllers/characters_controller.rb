@@ -1,6 +1,7 @@
 class CharactersController < ApplicationController
 	def index
 		@characters = Character.all
+		@characterStats = Character.stats
 	end
 
 	def show
