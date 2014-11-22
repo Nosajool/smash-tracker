@@ -34,17 +34,17 @@ class User < ActiveRecord::Base
 	def self.top_x_most_played_character(user_id, x)
 		# Match.unscoped.select("wcharacter_id").where(winner_id: user_id).group("wcharacter_id").order("count(*) desc")
 		User.find_by_sql("SELECT 
-			(SELECT name FROM characters WHERE id = wcharacter_id) as char, 
-			count(wcharacter_id) as games FROM
+			(SELECT name FROM characters WHERE id = wcharacter_id) AS char, 
+			count(wcharacter_id) AS games FROM
 											(SELECT wcharacter_id FROM matches WHERE winner_id = #{user_id}
 											UNION ALL
-											SELECT lcharacter_id FROM matches WHERE loser_id = #{user_id})
+											SELECT lcharacter_id FROM matches WHERE loser_id = #{user_id}) AS plays
 											GROUP BY wcharacter_id ORDER BY count(*) DESC LIMIT #{x}") # GROUP BY wcharacter_id ORDER BY count(*) DESC")
 	end
 
 	def self.stats
-		losses = Match.group(:loser_id).count
-		wins = Match.group(:winner_id).count
+		losses = Match.reorder(:loser_id).group(:loser_id).count
+		wins = Match.reorder(:winner_id).group(:winner_id).count
 		Hash[(losses.keys + wins.keys).uniq.map{|k| [k, [losses[k] || 0, wins[k] || 0]]} ]
 	end
 

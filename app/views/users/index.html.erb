@@ -5,21 +5,19 @@
 	  </h2>
 		<div class="list-group">
 			<% @users.each_with_index do |user, index| %>
-
 				<% unless @userStats[user.id].nil? %>
 
-				<%= link_to "#{index + 1}. #{user.name} (#{@userStats[user.id][1]}W #{@userStats[user.id][0]}L)", user_path(user.id), { class: "list-group-item" } %>
+					<%= link_to "#{index + 1}. #{user.name} (#{@userStats[user.id][1]}W #{@userStats[user.id][0]}L)", user_path(user.id), { class: "list-group-item" } %>
 
-				<% unless @winRate.nil? %>
-				<div class="progress">
-			  		<div class="progress-bar" role="progressbar" aria-valuenow="<%= @winRate[user.id] %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @winRate[user.id]%>%;">
-			    		<%= @winRate[user.id] %>%
-			 	 	</div>
-				</div>
+					<% unless @winRate.nil? %>
+						<div class="progress">
+					  		<div class="progress-bar" role="progressbar" aria-valuenow="<%= @winRate[user.id] %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @winRate[user.id]%>%;">
+					    		<%= @winRate[user.id] %>%
+					 	 	</div>
+						</div>
+					<% end %>
+
 				<% end %>
-
-				<% end %>
-
 			<% end %>
 		</div>
 	</div>
