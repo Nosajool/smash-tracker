@@ -1,57 +1,12 @@
-characters = ["Dr. Mario",
-			"Greninja",
-			"Ganondorf",
-			"Ike",
-			"Charizard",
-			"Captain Falcon",
-			"Bowser Jr.",
-			"Kirby",
-			"Link",
-			"Little Mac",
-			"Lucario",
-			"King Dedede",
-			"Jigglypuff",
-			"Luigi",
-			"Mario",
-			"Lucina",
-			"Mega Man",
-			"Marth",
-			"Meta Knight",
-			"Fox",
-			"Falco",
-			"Duck Hunt Dog",
-			"Bowser",
-			"Donkey Kong",
-			"Diddy Kong",
-			"Dark Pit",
-			"Ness",
-			"Mr. Game & Watch",
-			"Mii Brawler",
-			"Mii Gunner",
-			"Mii Swordfighter",
-			"Pit",
-			"Pikachu",	
-			"Robin",
-			"R.O.B.",
-			"Rosalina & Luma",
-			"Peach",
-			"Palutena",
-			"Pac-Man",
-			"Olimar",
-			"Samus",
-			"Sonic",
-			"Toon Link",
-			"Sheik",
-			"Shulk",
-			"Villager",
-			"Wii Fit Trainer",
-			"Wario",
-			"Yoshi",
-			"Zelda",
-			"Zero Suit Samus"]
-
-puts "Inputting character names"
-characters.each do |name|
-	Character.create!({ name: name })
-	puts "#{name} added"
+require 'json'
+character_data_file = 'app/data/characters.json'
+file = File.read(character_data_file)
+characters = JSON.parse(file)
+puts "Inputting character data"
+characters.each do |character|
+	Character.create!({ name: character["name"], 
+						id: character["id"],
+						imagename: character["imagename"],
+						colour: character["colour"] })
+	puts "#{character["name"]} added"
 end
