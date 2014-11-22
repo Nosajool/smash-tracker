@@ -35,6 +35,7 @@ group :development, :test do
 	gem 'spring'
 	gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
 	gem 'pry-byebug'
+	gem 'better_errors'
 end
 
 group :production do

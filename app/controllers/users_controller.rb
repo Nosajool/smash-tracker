@@ -17,12 +17,20 @@ class UsersController < ApplicationController
   	@users = User.all
     @userStats = User.stats
     @users = @users.sort_by do |user|
-      @userStats[user.id][1]
+      unless @userStats[user.id].nil?
+        @userStats[user.id][1]
+      else
+        -1
+      end        
     end
     @users.reverse!
     @winRate = Hash.new
     @users.each do |user|
-      @winRate[user.id] = ((@userStats[user.id][1].to_f /  (@userStats[user.id][1].to_f + @userStats[user.id][0].to_f)) * 100).round(0)
+      unless @userStats[user.id].nil?
+        @winRate[user.id] = ((@userStats[user.id][1].to_f /  (@userStats[user.id][1].to_f + @userStats[user.id][0].to_f)) * 100).round(0)
+      else
+        @winRate[user.id] = 0;
+      end
     end
   end
 
