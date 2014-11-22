@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
 	def self.stats
 		losses = Match.group(:loser_id).count
 		wins = Match.group(:winner_id).count
-		Hash[(losses.keys + wins.keys).uniq.map{|k| [k, [losses[k], wins[k]]]} ]
+		Hash[(losses.keys + wins.keys).uniq.map{|k| [k, [losses[k] || 0, wins[k] || 0]]} ]
 	end
 
 end
