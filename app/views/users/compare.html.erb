@@ -1,8 +1,6 @@
 <% if @user1 && @user2 %>
 	<h1>Comparing Match Statistics Between <%= @user1.name %> and <%= @user2.name %></h1>
 	<div class="match-list">
-		<h2>Total Matches (<%= @matches.count %>)</h2>
-		<%= render 'shared/match_list', matches: @matches %>
 		<div class="row">
 			<div class="col-md-6">
 				<h3>Victories for <%= @user1.name %> (<%= @u1matches.count %>)</h3>

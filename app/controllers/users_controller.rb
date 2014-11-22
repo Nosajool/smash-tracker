@@ -15,13 +15,13 @@ class UsersController < ApplicationController
 
   def index
   	@users = User.all
+    @userStats = User.stats
   end
 
   def show
     @user = User.find(params[:id])
     @victories = User.victories(@user.id)
     @defeats = User.defeats(@user.id)
-    @matches = User.matches(@user.id)
   end
 
   def compare
@@ -31,7 +31,6 @@ class UsersController < ApplicationController
       @user2 = User.find(params[:id2])
       @u1matches = User.wins_against(@user1.id, @user2.id)
       @u2matches = User.wins_against(@user2.id, @user1.id)
-      @matches = User.matches_between(@user1.id, @user2.id)
     else
     end
   end
