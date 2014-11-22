@@ -1,16 +1,26 @@
-<div class="col-md-6 col-md-offset-3 user-list">
-	<h2>User List (<%= @users.count %>)</h2>
-	<div class="list-group">
-		<table class="table list">
-			<% @users.each do |user| %>
-				<tr>
-			        <% unless @userStats[user.id].nil? %>
-			        	<td><%= "#{@userStats[user.id][1]}W" %></td>
-			        	<td><%= "#{@userStats[user.id][0]}L" %></td>
-			        <% end %>
-			    </tr>
+<div class="col-md-6 col-md-offset-3">
+	<div class="user-list">
+		<h2>User List (<%= @users.count %>)
+	  	<div class="pull-right"><%= button_to "Add New User", new_user_path, class: "btn btn-default", :method => :get %></div>
+	  </h2>
+		<div class="list-group">
+			<% @users.each_with_index do |user, index| %>
+
+				<% unless @userStats[user.id].nil? %>
+
+				<%= link_to "#{index + 1}. #{user.name} (#{@userStats[user.id][1]}W #{@userStats[user.id][0]}L)", user_path(user.id), { class: "list-group-item" } %>
+
+				<% unless @winRate.nil? %>
+				<div class="progress">
+			  		<div class="progress-bar" role="progressbar" aria-valuenow="<%= @winRate[user.id] %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @winRate[user.id]%>%;">
+			    		<%= @winRate[user.id] %>%
+			 	 	</div>
+				</div>
+				<% end %>
+
+				<% end %>
+
 			<% end %>
-		</table>
+		</div>
 	</div>
-	<%= link_to "Add New Player", new_user_path, {class: "btn btn-default"} %>
 </div>
