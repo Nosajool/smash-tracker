@@ -1,30 +1,32 @@
-<% if @user1 && @user2 %>
-	<h1>Comparing Match Statistics Between <%= @user1.name %> and <%= @user2.name %></h1>
-	<div class="match-list">
-		<div class="row">
-			<div class="col-md-6">
-				<h3>Victories for <%= @user1.name %> (<%= @u1matches.count %>)</h3>
-				<%= render 'shared/match_list', matches: @u1matches %>		
-			</div>
-			<div class="col-md-6">
-				<h3>Victories for <%= @user2.name %> (<%= @u2matches.count %>)</h3>
-				<%= render 'shared/match_list', matches: @u2matches %>			
+<div class="col-md-6 col-md-offset-3">
+	<% if @user1 && @user2 %>
+		<h1>Comparing Match Statistics Between <%= @user1.name %> and <%= @user2.name %></h1>
+		<div class="match-list">
+			<div class="row">
+				<div class="col-md-6">
+					<h3>Victories for <%= @user1.name %> (<%= @u1matches.count %>)</h3>
+					<%= render 'shared/match_list', matches: @u1matches %>		
+				</div>
+				<div class="col-md-6">
+					<h3>Victories for <%= @user2.name %> (<%= @u2matches.count %>)</h3>
+					<%= render 'shared/match_list', matches: @u2matches %>			
+				</div>
 			</div>
 		</div>
-	</div>
-<% end %>
+	<% end %>
 
-<h1>Compare 2 Players</h1>
-<%= form_tag("/compare/", method: "get") do %>
-	<div class="form-group">
-		<%= label_tag :id1, "First User" %>
-		<%= select_tag(:id1, options_for_select(users_hash(@users)), {class: "form-control" }) %>
-	</div>
-	<div class="form-group">
-		<%= label_tag :id2, "Second User" %>
-		<%= select_tag(:id2, options_for_select(users_hash(@users)), {class: "form-control" }) %>
-	</div>
-	<div class="form-group">
-	  <%= submit_tag "Compare Users", class: "btn btn-primary" %>
-	</div>
-<% end %>
+	<h1>Compare 2 Players</h1>
+	<%= form_tag("/compare/", method: "get") do %>
+		<div class="form-group">
+			<%= label_tag :id1, "First User" %>
+			<%= select_tag(:id1, options_for_select(users_hash(@users)), {class: "form-control" }) %>
+		</div>
+		<div class="form-group">
+			<%= label_tag :id2, "Second User" %>
+			<%= select_tag(:id2, options_for_select(users_hash(@users)), {class: "form-control" }) %>
+		</div>
+		<div class="form-group">
+		  <%= submit_tag "Compare Users", class: "btn btn-primary" %>
+		</div>
+	<% end %>
+</div>
