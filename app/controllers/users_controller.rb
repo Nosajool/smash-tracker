@@ -16,6 +16,10 @@ class UsersController < ApplicationController
   def index
   	@users = User.all
     @userStats = User.stats
+    @users = @users.sort_by do |user|
+      @userStats[user.id][1]
+    end
+    @users.reverse!
   end
 
   def show
