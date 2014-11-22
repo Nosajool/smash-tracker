@@ -2,13 +2,13 @@
 	<h2>User List (<%= @users.count %>)</h2>
 	<div class="list-group">
 		<% @users.each_with_index do |user, index| %>
-			<% winRate = ((@userStats[user.id][1].to_f /  (@userStats[user.id][1].to_f + @userStats[user.id][0].to_f)) * 100).round(0) %>
+
 
 			<%= link_to "#{index + 1}. #{user.name} (#{@userStats[user.id][1]}W #{@userStats[user.id][0]}L) and top 3 character icons", user_path(user.id), { class: "list-group-item" } %>
 
 			<div class="progress">
-		  		<div class="progress-bar" role="progressbar" aria-valuenow="<%= winRate %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= winRate %>%;">
-		    		<%= winRate %>%
+		  		<div class="progress-bar" role="progressbar" aria-valuenow="<%= @winRate[user.id] %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @winRate[user.id]%>%;">
+		    		<%= @winRate[user.id] %>%
 		 	 	</div>
 			</div>
 

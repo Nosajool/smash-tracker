@@ -20,6 +20,10 @@ class UsersController < ApplicationController
       @userStats[user.id][1]
     end
     @users.reverse!
+    @winRate = Hash.new
+    @users.each do |user|
+      @winRate[user.id] = ((@userStats[user.id][1].to_f /  (@userStats[user.id][1].to_f + @userStats[user.id][0].to_f)) * 100).round(0)
+    end
   end
 
   def show
