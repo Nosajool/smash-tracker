@@ -1,8 +1,18 @@
 <div class="user-list">
 	<h2>User List (<%= @users.count %>)</h2>
 	<div class="list-group">
-		<% @users.each do |user| %>
-			<%= link_to "#{user.name} (#{@userStats[user.id][1]}W #{@userStats[user.id][0]}L)", user_path(user.id), { class: "list-group-item" } %>
+		<% @users.each_with_index do |user, index| %>
+
+
+			<%= link_to "#{index + 1}. #{user.name} (#{@userStats[user.id][1]}W #{@userStats[user.id][0]}L) and top 3 character icons", user_path(user.id), { class: "list-group-item" } %>
+
+			<div class="progress">
+		  		<div class="progress-bar" role="progressbar" aria-valuenow="<%= @winRate[user.id] %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @winRate[user.id]%>%;">
+		    		<%= @winRate[user.id] %>%
+		 	 	</div>
+			</div>
+
+
 		<% end %>
 	</div>
 	<%= link_to "Add New Player", new_user_path, {class: "btn btn-default"} %>
