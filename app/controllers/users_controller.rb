@@ -16,14 +16,14 @@ class UsersController < ApplicationController
   def index
   	@users = User.all
     @userStats = User.stats
-    # @users = @users.sort_by do |user|
-    #   @userStats[user.id][1]
-    # end
-    #@users.reverse!
-    #@winRate = Hash.new
-    #@users.each do |user|
-    #  @winRate[user.id] = ((@userStats[user.id][1].to_f /  (@userStats[user.id][1].to_f + @userStats[user.id][0].to_f)) * 100).round(0)
-    #end
+    @users = @users.sort_by do |user|
+      @userStats[user.id][1]
+    end
+    @users.reverse!
+    @winRate = Hash.new
+    @users.each do |user|
+      @winRate[user.id] = ((@userStats[user.id][1].to_f /  (@userStats[user.id][1].to_f + @userStats[user.id][0].to_f)) * 100).round(0)
+    end
   end
 
   def show
