@@ -1,7 +1,11 @@
-<div class="match-list">
-	<h2>All Matches (<%= @matches.count %>)</h2>
+<div class="match-list col-md-6 col-md-offset-3">
+	<h2>All Matches (<%= @matches.count %>)
+		<div class="pull-right">
+			<%= link_to "Add New Match", new_match_path, {class: "btn btn-default"} %>
+		</div>
+	</h2>
 	<% if @matches.any? %>
 		<%= render 'shared/match_list', matches: @matches %>
 	<% end %>
-	<%= link_to "Add New Match", new_match_path, {class: "btn btn-default"} %>
+	
 </div>
