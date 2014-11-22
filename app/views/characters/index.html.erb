@@ -1,8 +1,14 @@
 <div class="character-list">
 	<h2>All Characters (<%= @characters.count %>)</h2>
 	<div class="list-group">
-		<% @characters.each do |character| %>
-			<%= link_to "#{character.name} (#{Character.num_victories(character.id)}W #{Character.num_defeats(character.id)}L)", character_path(character.id), { class: "list-group-item" } %>
-		<% end %>
+		<table class="table">
+			<% @characters.each do |character| %>
+				<tr>
+					<td><%= image_tag "character-thumb/#{character.imagename}.png" %></td>
+					<td><%= link_to "#{character.name}", character_path(character.id) %></td>
+					<td><%= "(#{Character.num_victories(character.id)}W #{Character.num_defeats(character.id)}L)" %></td>
+				</tr>
+			<% end %>
+		</table>
 	</div>
 </div>

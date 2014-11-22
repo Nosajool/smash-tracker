@@ -1,5 +1,14 @@
 <div class="list-group">
-	<% matches.each do |match| %>
-		<%= link_to "#{match.winner.name}'s #{match.wcharacter.name} beat #{match.loser.name}'s #{match.lcharacter.name} by #{match.winner_stock} stock #{time_ago_in_words(match.created_at)} ago", match_path(match.id), { class: "list-group-item" } %>
-	<% end %>
+	<table class="table">
+		<% matches.each do |match| %>
+			<tr>
+				<td align="right"><%= link_to "#{match.winner.name}", match.winner %></td>
+				<td align="center"><%= image_tag "character-thumb/#{match.wcharacter.imagename}.png" %></td>
+				<td align="center"><%= "#{match.winner_stock}" %></td>
+				<td align="center"><%= image_tag "character-thumb/#{match.lcharacter.imagename}.png" %></td>
+				<td align="left"><%= link_to "#{match.loser.name}", match.loser %></td>
+				<!-- <td><%= "#{time_ago_in_words(match.created_at)} ago"%></td> -->
+			</tr>
+		<% end %>
+	</table>
 </div>
