@@ -13,7 +13,7 @@
 			<h4>Most Used Characters</h4>
 			<div class="list-group">
 				<% @mostPlayedChars.each do |user| %>
-					<a class="list-group-item"><%= user.char %>, <%= user.games %> matches</a>
+					<a class="list-group-item"><%= user.char %>, <%= user.games %> <%= "match".pluralize(user.games)%></a>
 				<% end %>
 			</div>
 		</div>
