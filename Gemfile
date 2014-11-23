@@ -26,12 +26,13 @@ gem 'faker'
 
 gem 'bootstrap-sass'
 
+gem 'pg'
+
 group :doc do
 	gem 'sdoc', '~> 0.4.0'
 end
 
 group :development, :test do
-	gem 'pg'
 	gem 'spring'
 	gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
 	gem 'pry-byebug'
@@ -39,6 +40,5 @@ group :development, :test do
 end
 
 group :production do
-	gem 'pg'
 	gem 'rails_12factor'
 end
