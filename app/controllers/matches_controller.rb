@@ -17,7 +17,7 @@ class MatchesController < ApplicationController
   end
 
   def index
-  	@matches = Match.includes(:lcharacter, :wcharacter, :winner, :loser).all
+  	@matches = Match.includes(:lcharacter, :wcharacter, :winner, :loser).paginate(:page => params[:page], :per_page => 30)
   end
 
   def show

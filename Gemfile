@@ -25,19 +25,21 @@ gem 'jbuilder', '~> 2.0'
 gem 'faker'
 
 gem 'bootstrap-sass'
+gem 'will_paginate-bootstrap'
+
+gem 'pg'
 
 group :doc do
 	gem 'sdoc', '~> 0.4.0'
 end
 
 group :development, :test do
-	gem 'sqlite3'
 	gem 'spring'
 	gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
 	gem 'pry-byebug'
+	gem 'better_errors'
 end
 
 group :production do
-	gem 'pg'
 	gem 'rails_12factor'
 end

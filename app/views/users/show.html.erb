@@ -9,11 +9,11 @@
 			<h3>Defeats (<%= @defeats.count %>)</h3>
 			<%= render 'shared/match_list', matches: @defeats %>			
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-3 col-md-offset-1">
 			<h4>Most Used Characters</h4>
 			<div class="list-group">
 				<% @mostPlayedChars.each do |user| %>
-					<a class="list-group-item"><%= user.char %>, <%= user.games %> matches</a>
+					<a class="list-group-item"><%= user.char %>, <%= user.games %> <%= "match".pluralize(user.games)%></a>
 				<% end %>
 			</div>
 		</div>
