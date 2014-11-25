@@ -13,7 +13,12 @@ class MatchesController < ApplicationController
     if @match.save
       flash[:success] = "Match #{@match.id} created."
       redirect_to root_url
-    else
+    else # handle validation errors
+      @winner = @match.winner_id
+      @loser = @match.loser_id
+      @winner_stock = @match.winner_stock
+      @wcharacter = @match.wcharacter_id
+      @lcharacter = @match.lcharacter_id
       render 'new'
     end
   end
