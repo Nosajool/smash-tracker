@@ -1,7 +1,13 @@
 <%= render 'shared/error_messages', object: f.object %>
 <div class="form-group">
 	<%= f.label :winner_id, "Winner" %>
-	<%= select_tag(:winner_id, options_for_select(users_hash(@users), @winner), {class: "form-control"}) %>
+	<% if @match.errors[:winner_and_loser].any? %>
+		<div class="has-error">
+			<%= select_tag(:winner_id, options_for_select(users_hash(@users), @winner), {class: "form-control"}) %>
+		</div>
+	<% else %>
+			<%= select_tag(:winner_id, options_for_select(users_hash(@users), @winner), {class: "form-control"}) %>
+	<% end %>
 </div>
 <div class="form-group">
 	<%= f.label :wcharacter_id, "Winner's Character" %>
@@ -13,7 +19,13 @@
 </div>
 <div class="form-group">
 	<%= f.label :loser_id, "Loser" %>
-	<%= select_tag(:loser_id, options_for_select(users_hash(@users), @loser), {class: "form-control"}) %>
+	<% if @match.errors[:winner_and_loser].any? %>
+		<div class="has-error">
+			<%= select_tag(:loser_id, options_for_select(users_hash(@users), @loser), {class: "form-control"}) %>
+		</div>
+	<% else %>
+		<%= select_tag(:loser_id, options_for_select(users_hash(@users), @loser), {class: "form-control"}) %>
+	<% end %>
 </div>
 <div class="form-group">
 	<%= f.label :lcharacter_id, "Loser's Character" %>
