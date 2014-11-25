@@ -1,4 +1,34 @@
 <%= render 'shared/error_messages', object: f.object %>
+<% if @match.errors %>
+<div class="form-group">
+	<%= f.label :winner_id, "Winner" %>
+	<%= select_tag(:winner_id, options_for_select(users_hash(@users)), {class: "form-control field_with_errors"}) if @match.errors[:winner_and_loser] %>
+	<%= select_tag(:winner_id, options_for_select(users_hash(@users)), {class: "form-control" }) %>
+</div>
+<div class="form-group">
+	<%= f.label :wcharacter_id, "Winner's Character" %>
+	<%= select_tag(:wcharacter_id, options_for_select(character_hash(@characters)), {class: "form-control" }) %>
+	<%= select_tag(:wcharacter_id, options_for_select(character_hash(@characters)), {class: "form-control" }) %>
+</div>
+<div class="form-group">
+	<%= f.label :winner_stock, "Winner's Stock remaining" %>
+	<%= select_tag(:winner_stock, options_for_select(stock_hash), {class: "form-control" }) %>
+	<%= select_tag(:winner_stock, options_for_select(stock_hash), {class: "form-control" }) %>
+</div>
+<div class="form-group">
+	<%= f.label :loser_id, "Loser" %>
+	<%= select_tag(:loser_id, options_for_select(users_hash(@users)), {class: "form-control field_with_errors"}) if @match.errors[:winner_and_loser] %>
+	<%= select_tag(:loser_id, options_for_select(users_hash(@users)), {class: "form-control" }) %>
+</div>
+<div class="form-group">
+	<%= f.label :lcharacter_id, "Loser's Character" %>
+	<%= select_tag(:lcharacter_id, options_for_select(character_hash(@characters)), {class: "form-control" }) %>
+	<%= select_tag(:lcharacter_id, options_for_select(character_hash(@characters)), {class: "form-control" }) %>
+</div>
+<div class="form-group">
+  <%= f.submit "Add Match", class: "btn btn-primary" %>
+</div>
+<% else %>
 <div class="form-group">
 	<%= f.label :winner_id, "Winner" %>
 	<%= select_tag(:winner_id, options_for_select(users_hash(@users)), {class: "form-control" }) %>
@@ -22,3 +52,4 @@
 <div class="form-group">
   <%= f.submit "Add Match", class: "btn btn-primary" %>
 </div>
+<% end %>

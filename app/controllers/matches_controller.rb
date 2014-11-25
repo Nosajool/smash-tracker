@@ -7,6 +7,8 @@ class MatchesController < ApplicationController
 
   def create
     @match = Match.new(match_params)
+    @users = User.all
+    @characters = Character.all
 
     if @match.save
       flash[:success] = "Match #{@match.id} created."
