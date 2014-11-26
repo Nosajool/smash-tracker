@@ -46,8 +46,8 @@ class UsersController < ApplicationController
     if params[:id1] && params[:id2]
       @user1 = User.find(params[:id1])
       @user2 = User.find(params[:id2])
-      @u1matches = User.wins_against(@user1.id, @user2.id)
-      @u2matches = User.wins_against(@user2.id, @user1.id)
+      @u1matches = @user1.wins_against(@user2.id)
+      @u2matches = @user2.wins_against(@user1.id)
     else
     end
   end

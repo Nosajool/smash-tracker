@@ -15,25 +15,27 @@ class User < ActiveRecord::Base
 	# 	Match.includes(:lcharacter, :wcharacter, :winner, :loser).where(loser_id: user_id)
 	# end	
 
-	def self.all_matches(user_id)
-		Match.includes(:lcharacter, :wcharacter, :winner, :loser).where("winner_id = #{user_id} OR loser_id = #{user_id}")
+	def all_matches
+		Match.includes(:lcharacter, :wcharacter, :winner, :loser).where("winner_id = #{self.id} OR loser_id = #{self.id}")
 	end
 
-	def self.wins_against(winner_id, loser_id)
-		Match.includes(:lcharacter, :wcharacter, :winner, :loser).where(winner_id: winner_id, loser_id: loser_id)
+	def wins_against(loser_id)
+		Match.includes(:lcharacter, :wcharacter, :winner, :loser).where(winner_id: self.id, loser_id: loser_id)
 	end
 
-	def self.matches_between(user1_id, user2_id)
-		Match.includes(:lcharacter, :wcharacter, :winner, :loser).where("(winner_id = #{user1_id} AND loser_id = #{user2_id}) OR (winner_id = #{user2_id} AND loser_id = #{user1_id})")
+	def matches_with(user2_id)
+		Match.includes(:lcharacter, :wcharacter, :winner, :loser).where("(winner_id = #{self.id} AND loser_id = #{user2_id}) OR (winner_id = #{user2_id} AND loser_id = #{self.id})")
 	end
 
-	def self.num_victories(user_id)
-		Match.where(winner_id: user_id).count
-	end
+	# dreprecated by User#wins.count
+	# def num_victories
+	# 	Match.where(winner_id: self.id).count
+	# end
 
-	def self.num_defeats(user_id)
-		Match.where(loser_id: user_id).count
-	end
+	# dreprecated by User#losses.count
+	# def num_defeats(user_id)
+	# 	Match.where(loser_id: self.id).count
+	# end
 
 	def top_x_most_played_character(x)
 		# Match.unscoped.select("wcharacter_id").where(winner_id: user_id).group("wcharacter_id").order("count(*) desc")
