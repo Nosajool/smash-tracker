@@ -24,6 +24,6 @@ class Character < ActiveRecord::Base
 	def self.stats
 		losses = Match.reorder(:lcharacter_id).group(:lcharacter_id).count
 		wins = Match.reorder(:wcharacter_id).group(:wcharacter_id).count
-		Hash[(losses.keys + wins.keys).uniq.map{|k| [k, [losses[k] || 0, wins[k] || 0]]} ]
+		Hash[((1..Character.count).to_a).map{|k| [k, [losses[k] || 0, wins[k] || 0]]} ]
 	end
 end
