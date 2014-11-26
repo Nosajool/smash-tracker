@@ -1,5 +1,6 @@
 class Character < ActiveRecord::Base
-	has_many :matches
+	has_many :wins, class_name: 'Match', foreign_key: 'wcharacter_id'
+	has_many :losses, class_name: 'Match', foreign_key: 'lcharacter_id'
 
 	def self.victories(character_id)
 		Match.includes(:lcharacter, :wcharacter, :loser, :winner).where(wcharacter_id: character_id)
