@@ -1,23 +1,35 @@
 <%= render 'shared/error_messages', object: f.object %>
 <div class="form-group">
 	<%= f.label :winner_id, "Winner" %>
-	<%= select_tag(:winner_id, options_for_select(users_hash(@users)), {class: "form-control" }) %>
+	<% if @match.errors[:winner_and_loser].any? %>
+		<div class="has-error">
+			<%= select_tag(:winner_id, options_for_select(users_hash(@users), @winner), {class: "form-control"}) %>
+		</div>
+	<% else %>
+			<%= select_tag(:winner_id, options_for_select(users_hash(@users), @winner), {class: "form-control"}) %>
+	<% end %>
 </div>
 <div class="form-group">
 	<%= f.label :wcharacter_id, "Winner's Character" %>
-	<%= select_tag(:wcharacter_id, options_for_select(character_hash(@characters)), {class: "form-control" }) %>
+	<%= select_tag(:wcharacter_id, options_for_select(character_hash(@characters), @wcharacter), {class: "form-control"}) %>
 </div>
 <div class="form-group">
 	<%= f.label :winner_stock, "Winner's Stock remaining" %>
-	<%= select_tag(:winner_stock, options_for_select(stock_hash), {class: "form-control" }) %>
+	<%= select_tag(:winner_stock, options_for_select(stock_hash, @winner_stock), {class: "form-control"}) %>
 </div>
 <div class="form-group">
 	<%= f.label :loser_id, "Loser" %>
-	<%= select_tag(:loser_id, options_for_select(users_hash(@users)), {class: "form-control" }) %>
+	<% if @match.errors[:winner_and_loser].any? %>
+		<div class="has-error">
+			<%= select_tag(:loser_id, options_for_select(users_hash(@users), @loser), {class: "form-control"}) %>
+		</div>
+	<% else %>
+		<%= select_tag(:loser_id, options_for_select(users_hash(@users), @loser), {class: "form-control"}) %>
+	<% end %>
 </div>
 <div class="form-group">
 	<%= f.label :lcharacter_id, "Loser's Character" %>
-	<%= select_tag(:lcharacter_id, options_for_select(character_hash(@characters)), {class: "form-control" }) %>
+	<%= select_tag(:lcharacter_id, options_for_select(character_hash(@characters), @lcharacter), {class: "form-control"}) %>
 </div>
 <div class="form-group">
   <%= f.submit "Add Match", class: "btn btn-primary" %>
