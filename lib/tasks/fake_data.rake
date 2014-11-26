@@ -9,7 +9,7 @@ namespace :db do
 
     # Create some matches
 
-    for x in (1..20)
+    for x in (1..480)
       w_char_id = Character.order("Random()").first.id
       l_char_id = Character.order("Random()").first.id
       while(l_char_id == w_char_id)

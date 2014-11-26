@@ -25,9 +25,11 @@ gem 'jbuilder', '~> 2.0'
 gem 'faker'
 
 gem 'bootstrap-sass'
-gem 'will_paginate-bootstrap'
+gem 'kaminari'
 
 gem 'pg'
+
+gem 'rails_admin'
 
 group :doc do
 	gem 'sdoc', '~> 0.4.0'
