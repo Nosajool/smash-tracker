@@ -36,9 +36,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @victories = User.victories(@user.id)
-    @defeats = User.defeats(@user.id)
-    @mostPlayedChars = User.top_x_most_played_character(@user.id, 20)
+    @victories = @user.wins.includes(:lcharacter, :wcharacter, :winner, :loser)
+    @defeats = @user.losses.includes(:lcharacter, :wcharacter, :winner, :loser)
+    @mostPlayedChars = @user.top_x_most_played_character(20)
   end
 
   def compare

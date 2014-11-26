@@ -6,7 +6,7 @@ class CharactersController < ApplicationController
 
 	def show
 	  	@character = Character.find(params[:id])
-	  	@victories = Character.victories(@character.id)
-	  	@defeats = Character.defeats(@character.id)
+	  	@victories = @character.wins.includes(:lcharacter, :wcharacter, :winner, :loser)
+	  	@defeats = @character.losses.includes(:lcharacter, :wcharacter, :winner, :loser)
 	end
 end

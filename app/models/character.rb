@@ -2,13 +2,15 @@ class Character < ActiveRecord::Base
 	has_many :wins, class_name: 'Match', foreign_key: 'wcharacter_id'
 	has_many :losses, class_name: 'Match', foreign_key: 'lcharacter_id'
 
-	def self.victories(character_id)
-		Match.includes(:lcharacter, :wcharacter, :loser, :winner).where(wcharacter_id: character_id)
-	end
+	# deprecated by @character.wins.includes(:lcharacter, :wcharacter, :winner, :loser)
+	# def self.victories(character_id)
+	# 	Match.includes(:lcharacter, :wcharacter, :loser, :winner).where(wcharacter_id: character_id)
+	# end
 
-	def self.defeats(character_id)
-		Match.includes(:lcharacter, :wcharacter, :loser, :winner).where(lcharacter_id: character_id)
-	end
+	# deprecated by @character.losses.includes(:lcharacter, :wcharacter, :winner, :loser)
+	# def self.defeats(character_id)
+	# 	Match.includes(:lcharacter, :wcharacter, :loser, :winner).where(lcharacter_id: character_id)
+	# end
 
 	def self.matches(character_id)
 		Match.includes(:lcharacter, :wcharacter, :loser, :winner).where("wcharacter_id = #{character_id} OR lcharacter_id = #{character_id}")
