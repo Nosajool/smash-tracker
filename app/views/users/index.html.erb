@@ -5,7 +5,6 @@
 	  </h2>
 		<div class="list-group">
 			<% @users.each_with_index do |user, index| %>
-				<% unless @userStats[user.id].nil? %>
 
 					<%= link_to "#{index + 1}. #{user.name} (#{@userStats[user.id][1]}W #{@userStats[user.id][0]}L)", user_path(user.id), { class: "list-group-item" } %>
 
@@ -17,7 +16,6 @@
 						</div>
 					<% end %>
 
-				<% end %>
 			<% end %>
 		</div>
 	</div>

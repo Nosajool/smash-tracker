@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
 	def self.stats
 		losses = Match.reorder(:loser_id).group(:loser_id).count
 		wins = Match.reorder(:winner_id).group(:winner_id).count
-		Hash[(losses.keys + wins.keys).uniq.map{|k| [k, [losses[k] || 0, wins[k] || 0]]} ]
+		Hash[((1..User.count).to_a).map{|k| [k, [losses[k] || 0, wins[k] || 0]]} ]
 	end
 
 end
