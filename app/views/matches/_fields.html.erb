@@ -3,11 +3,11 @@
 	<%= f.label :winner_id, "Winner" %>
 	<% if @match.errors[:winner_and_loser].any? %>
 		<div class="has-error">
+	<% else %>
+		<div>
+	<% end %>
 			<%= select_tag(:winner_id, options_for_select(users_hash(@users), @match.winner_id), {class: "form-control"}) %>
 		</div>
-	<% else %>
-			<%= select_tag(:winner_id, options_for_select(users_hash(@users), @match.winner_id), {class: "form-control"}) %>
-	<% end %>
 </div>
 <div class="form-group">
 	<%= f.label :wcharacter_id, "Winner's Character" %>
@@ -21,11 +21,11 @@
 	<%= f.label :loser_id, "Loser" %>
 	<% if @match.errors[:winner_and_loser].any? %>
 		<div class="has-error">
+	<% else %>
+		<div>
+	<% end %>
 			<%= select_tag(:loser_id, options_for_select(users_hash(@users), @match.loser_id), {class: "form-control"}) %>
 		</div>
-	<% else %>
-		<%= select_tag(:loser_id, options_for_select(users_hash(@users), @match.loser_id), {class: "form-control"}) %>
-	<% end %>
 </div>
 <div class="form-group">
 	<%= f.label :lcharacter_id, "Loser's Character" %>
