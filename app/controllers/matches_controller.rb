@@ -19,7 +19,8 @@ class MatchesController < ApplicationController
   end
 
   def index
-  	@matches = Match.includes(:lcharacter, :wcharacter, :winner, :loser).page(params[:page]).per(30)
+    @matches = Match.includes(:lcharacter, :wcharacter, :winner, :loser).page(params[:page]).per(30)
+    @numMatches = Match.all.count
   end
 
   def show
