@@ -1,8 +1,8 @@
 <div class="col-md-6 col-md-offset-3">
 	<div class="user-list">
-		<h2>User List (<%= @users.count %>)
+		<h1>User List (<%= @users.count %>)
 	  	<div class="pull-right"><%= button_to "Add New User", new_user_path, class: "btn btn-default", :method => :get %></div>
-	  </h2>
+	  </h1>
 		<div class="list-group">
 			<% @users.each_with_index do |user, index| %>
 

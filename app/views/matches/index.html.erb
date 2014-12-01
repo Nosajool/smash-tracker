@@ -1,9 +1,9 @@
 <div class="col-md-8 col-md-offset-2">
-	<h2>All Matches (<%= @numMatches %>)
+	<h1>All Matches (<%= @numMatches %>)
 		<div class="pull-right">
 			<%= link_to "Add New Match", new_match_path, {class: "btn btn-default"} %>
 		</div>
-	</h2>
+	</h1>
 	<div style="text-align: center;">
 		<%= paginate @matches, window: 3 %>
 	</div>
