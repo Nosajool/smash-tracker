@@ -1,6 +1,9 @@
 class Character < ActiveRecord::Base
 	has_many :matches
 
+  validates_presence_of :imagename
+  validates_presence_of :colour
+
 	def self.victories(character_id)
 		Match.includes(:lcharacter, :wcharacter, :loser, :winner).where(wcharacter_id: character_id)
 	end

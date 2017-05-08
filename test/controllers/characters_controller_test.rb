@@ -7,7 +7,7 @@ class CharactersControllerTest < ActionController::TestCase
   end
 
   test "should get a character's page" do
-    get(:show, {'id' => "1"})
+    get :show, id: characters(:fox)
     assert_response :success
   end
 end

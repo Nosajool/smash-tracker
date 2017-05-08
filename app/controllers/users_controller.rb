@@ -13,15 +13,16 @@ class UsersController < ApplicationController
   	end
   end
 
+  # Refactor this.
   def index
   	@users = User.all
     @userStats = User.stats
     @users = @users.sort_by do |user|
-      unless @userStats[user.id].nil?
-        @userStats[user.id][1]
-      else
+      if @userStats[user.id].nil?
         -1
-      end        
+      else
+        @userStats[user.id][1]
+      end
     end
     @users.reverse!
     @winRate = Hash.new

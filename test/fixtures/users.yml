@@ -1,21 +1,8 @@
-# Must specify an id otherwise the fixtures will generate a huge number and associations won't work
+armada:
+  name: Armada
 
-user1:
-  id: 1
-  name: user1
+hungrybox:
+  name: Hungrybox
 
-user2:
-  id: 2
-  name: user2
-
-user3:
-  id: 3
-  name: user3
-
-user4:
-  id: 4
-  name: user4
-
-user5:
-  id: 5
-  name: user5
+ppmd:
+  name: PPMD

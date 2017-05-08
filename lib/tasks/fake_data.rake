@@ -7,27 +7,18 @@ namespace :db do
       User.create!(name: name)
     end
 
-    # Create some matches
-
-    for x in (1..20)
-      w_char_id = Character.order("Random()").first.id
-      l_char_id = Character.order("Random()").first.id
-      while(l_char_id == w_char_id)
-        l_char_id = Character.order("Random()").first.id
-      end
-      w_id = User.order("Random()").first.id
-      l_id = User.order("Random()").first.id
-      while(l_id == w_id)
-        l_id = User.order("Random()").first.id
-      end
+    1.upto(20) do |x|
+      winning_character, losing_character = Character.order("Random()").take(2)
+      winning_user, losing_user = User.order("Random()").take(2)
       stock = 1 + rand(4)
-      Match.create!(winner_stock: stock,
-                    winner_id: w_id,
-                    loser_id: l_id,
-                    wcharacter_id: w_char_id,
-                    lcharacter_id: l_char_id)
+      Match.create!(
+        winner_stock: stock,
+        winner: winning_user,
+        loser: losing_user,
+        wcharacter: winning_character,
+        lcharacter: losing_character
+      )
     end
-
-
   end
+
 end

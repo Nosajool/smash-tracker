@@ -8,6 +8,5 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 		    assert_select "a[href=?]", new_match_path
 		    assert_select "a[href=?]", matches_path
 		    assert_select "a[href=?]", users_path
-		    assert_select "a[href=?]", new_user_path
 	end
 end

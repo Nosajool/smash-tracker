@@ -12,8 +12,7 @@ class MatchesControllerTest < ActionController::TestCase
   end
 
   test "should get show" do
-    get(:show, {'id' => "1"})
+    get :show, id: matches(:evo)
     assert_response :success
   end
-
 end

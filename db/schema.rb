@@ -13,7 +13,10 @@
 
 ActiveRecord::Schema.define(version: 20141122032014) do
 
-  create_table "characters", force: true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "characters", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -21,7 +24,7 @@ ActiveRecord::Schema.define(version: 20141122032014) do
     t.string   "imagename"
   end
 
-  create_table "matches", force: true do |t|
+  create_table "matches", force: :cascade do |t|
     t.integer  "winner_id"
     t.integer  "loser_id"
     t.integer  "winner_stock"
@@ -31,17 +34,17 @@ ActiveRecord::Schema.define(version: 20141122032014) do
     t.integer  "lcharacter_id"
   end
 
-  add_index "matches", ["lcharacter_id"], name: "index_matches_on_lcharacter_id"
-  add_index "matches", ["loser_id"], name: "index_matches_on_loser_id"
-  add_index "matches", ["wcharacter_id"], name: "index_matches_on_wcharacter_id"
-  add_index "matches", ["winner_id"], name: "index_matches_on_winner_id"
+  add_index "matches", ["lcharacter_id"], name: "index_matches_on_lcharacter_id", using: :btree
+  add_index "matches", ["loser_id"], name: "index_matches_on_loser_id", using: :btree
+  add_index "matches", ["wcharacter_id"], name: "index_matches_on_wcharacter_id", using: :btree
+  add_index "matches", ["winner_id"], name: "index_matches_on_winner_id", using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "users", ["name"], name: "index_users_on_name", unique: true
+  add_index "users", ["name"], name: "index_users_on_name", unique: true, using: :btree
 
 end

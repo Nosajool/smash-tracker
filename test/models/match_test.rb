@@ -2,29 +2,20 @@ require 'test_helper'
 
 class MatchTest < ActiveSupport::TestCase
 	def setup
-		@user1 = users(:user1)
-		@user2 = users(:user2)
-		@wchar = 1
-		@lchar = 2
-		@stock = 3
-		@match = Match.new(winner_stock: 1, 
-						   winner_id: @user1.id,
-						   loser_id: @user2.id,
-						   wcharacter_id: @wchar,
-						   lcharacter_id: @lchar)
+    @match = matches(:evo)
 	end
 
 	test "match should be valid" do
-		assert @match.valid?		
+		assert @match.valid?
 	end
 
 	test "winner id should exist" do
-		@match.winner_id = nil
+		@match.winner = nil
 		assert_not @match.valid?
 	end
 
 	test "loser id should exist" do
-		@match.loser_id = nil
+		@match.loser = nil
 		assert_not @match.valid?
 	end
 
@@ -43,17 +34,16 @@ class MatchTest < ActiveSupport::TestCase
 		assert_not @match.valid?
 	end
 
-	test "winning character id should be valid" do
-		@match.wcharacter_id = 100
-		assert_not @match.valid?
-	end
+	test "default order" do
+    apex = matches(:apex)
+    today = Time.now
+    yesterday = today - 1.day
+    Timecop.freeze(today) do
+      @match.update!(created_at: today)
+      apex.update!(created_at: yesterday)
 
-	test "losing character id should be valid" do
-		@match.lcharacter_id = 100
-		assert_not @match.valid?
-	end
-
-	test "order should be most recent first" do
-		assert_equal Match.first, matches(:three)
+      assert_equal Match.first, @match
+      assert_equal Match.last, apex
+    end
 	end
 end

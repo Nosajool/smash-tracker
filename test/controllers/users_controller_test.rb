@@ -7,13 +7,13 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
-    get :index
+    # get :index
     assert_response :success
   end
 
   test "should get show" do
-    get(:show, {'id' => "1"})
+    user = users(:armada)
+    get :show, id: user
     assert_response :success
   end
-
 end

@@ -47,5 +47,4 @@ class User < ActiveRecord::Base
 		wins = Match.reorder(:winner_id).group(:winner_id).count
 		Hash[((1..User.count).to_a).map{|k| [k, [losses[k] || 0, wins[k] || 0]]} ]
 	end
-
 end

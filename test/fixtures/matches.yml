@@ -1,28 +1,13 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  id: 1
-  winner_id: 1
-  loser_id: 3
+evo:
+  winner: armada
+  loser: hungrybox
   winner_stock: 1
-  wcharacter_id: 1
-  lcharacter_id: 2
-  created_at: <%= 5.hours.ago %>
+  wcharacter: fox
+  lcharacter: jigglypuff
 
-two:
-  id: 2
-  winner_id: 1
-  loser_id: 2
-  winner_stock: 2
-  wcharacter_id: 3
-  lcharacter_id: 4
-  created_at: <%= 10.years.ago %>
-
-three:
-  id: 3
-  winner_id: 2
-  loser_id: 3
-  winner_stock: 3
-  wcharacter_id: 5
-  lcharacter_id: 6
-  created_at: <%= 5.minutes.ago %>
+apex:
+  winner: ppmd
+  loser: armada
+  winner_stock: 1
+  wcharacter: marth
+  lcharacter: fox
